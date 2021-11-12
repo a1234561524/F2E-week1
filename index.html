@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto:ital,wght@0,500;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script defer src="result.js"></script>
+    <title>台灣旅遊導覽</title>
+  </head>
+  <body class="container">
+    <header class="header">
+      <a href="index.html" class="logo">
+        <img class="logo__img" src="img/logo.png" alt="logo" />
+      </a>
+      <nav class="use-nav">
+        <div class="use-nav__attraction">
+          <svg
+            class="use-nav__icon"
+            width="42"
+            height="42"
+            viewBox="0 0 42 42"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.5"
+              y="0.5"
+              width="41"
+              height="41"
+              rx="20.5"
+              fill="#FF1D6C"
+            />
+            <path d="M21 16.4706L15.5 25.5294H26.5L21 16.4706Z" fill="white" />
+            <rect
+              x="0.5"
+              y="0.5"
+              width="41"
+              height="41"
+              rx="20.5"
+              stroke="#FF1D6C"
+            />
+          </svg>
+          <a href="index.html" class="use-nav__link-1">台灣景點</a>
+        </div>
+
+        <div class="use-nav__stay">
+          <svg
+            class="use-nav__icon"
+            width="42"
+            height="42"
+            viewBox="0 0 42 42"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="42" height="42" rx="21" fill="#FFB72C" />
+            <rect x="16.5" y="16.5" width="9" height="9" fill="white" />
+          </svg>
+          <a href="food.html" class="use-nav__link-2">美食住宿</a>
+        </div>
+        <div class="use-nav__transportation">
+          <svg
+            class="use-nav__icon"
+            width="42"
+            height="42"
+            viewBox="0 0 42 42"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="42" height="42" rx="21" fill="#007350" />
+            <circle cx="21" cy="21" r="5.5" fill="white" />
+          </svg>
+
+          <a href="#" class="use-nav__link-3">景點交通</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="search shadow">
+      <div class="search__contain">
+        <svg
+          class="search__icon"
+          width="488"
+          height="71"
+          viewBox="0 0 488 71"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g filter="url(#filter0_d_5806:6918)">
+            <path
+              d="M33.1104 46.7461L37.8955 21.4531H45.1953L37.3096 57H29.9365L24.1504 33.2207L18.3643 57H10.9912L3.10547 21.4531H10.4053L15.2148 46.6973L21.0742 21.4531H27.2754L33.1104 46.7461ZM60.0879 57.4883C56.2142 57.4883 53.0566 56.3001 50.6152 53.9238C48.1901 51.5475 46.9775 48.3818 46.9775 44.4268V43.7432C46.9775 41.0902 47.4902 38.722 48.5156 36.6387C49.541 34.5391 50.9896 32.9277 52.8613 31.8047C54.7493 30.6654 56.8978 30.0957 59.3066 30.0957C62.9199 30.0957 65.7601 31.235 67.8271 33.5137C69.9105 35.7923 70.9521 39.0231 70.9521 43.2061V46.0869H54.1309C54.3587 47.8122 55.0423 49.1956 56.1816 50.2373C57.3372 51.279 58.7939 51.7998 60.5518 51.7998C63.2699 51.7998 65.3939 50.8151 66.9238 48.8457L70.3906 52.7275C69.3327 54.2249 67.9004 55.3968 66.0938 56.2432C64.2871 57.0732 62.2852 57.4883 60.0879 57.4883ZM59.2822 35.8086C57.8825 35.8086 56.7432 36.2806 55.8643 37.2246C55.0016 38.1686 54.4482 39.5195 54.2041 41.2773H64.0186V40.7158C63.986 39.1533 63.5628 37.9489 62.749 37.1025C61.9352 36.2399 60.7796 35.8086 59.2822 35.8086ZM82.4268 57H75.3467V19.5H82.4268V57ZM99.248 51.7998C100.55 51.7998 101.608 51.4417 102.422 50.7256C103.236 50.0094 103.659 49.0573 103.691 47.8691H110.308C110.291 49.6595 109.803 51.3034 108.843 52.8008C107.882 54.2819 106.564 55.4375 104.888 56.2676C103.228 57.0814 101.388 57.4883 99.3701 57.4883C95.5941 57.4883 92.6156 56.292 90.4346 53.8994C88.2536 51.4906 87.1631 48.1702 87.1631 43.9385V43.4746C87.1631 39.4056 88.2454 36.1585 90.4102 33.7334C92.5749 31.3083 95.5452 30.0957 99.3213 30.0957C102.625 30.0957 105.27 31.0397 107.256 32.9277C109.258 34.7995 110.275 37.2979 110.308 40.4229H103.691C103.659 39.0557 103.236 37.9489 102.422 37.1025C101.608 36.2399 100.534 35.8086 99.1992 35.8086C97.5553 35.8086 96.3102 36.4108 95.4639 37.6152C94.6338 38.8034 94.2188 40.7402 94.2188 43.4258V44.1582C94.2188 46.8763 94.6338 48.8294 95.4639 50.0176C96.2939 51.2057 97.5553 51.7998 99.248 51.7998ZM158.306 30.584L158.525 33.5381C160.397 31.2432 162.928 30.0957 166.118 30.0957C169.52 30.0957 171.855 31.4385 173.125 34.124C174.98 31.4385 177.625 30.0957 181.06 30.0957C183.924 30.0957 186.056 30.9339 187.456 32.6104C188.856 34.2705 189.556 36.777 189.556 40.1299V57H182.476V40.1543C182.476 38.6569 182.183 37.5664 181.597 36.8828C181.011 36.1829 179.977 35.833 178.496 35.833C176.38 35.833 174.915 36.8421 174.102 38.8604L174.126 57H167.07V40.1787C167.07 38.6488 166.769 37.542 166.167 36.8584C165.565 36.1748 164.539 35.833 163.091 35.833C161.089 35.833 159.64 36.6631 158.745 38.3232V57H151.689V30.584H158.306ZM207.158 57.4883C203.285 57.4883 200.127 56.3001 197.686 53.9238C195.26 51.5475 194.048 48.3818 194.048 44.4268V43.7432C194.048 41.0902 194.561 38.722 195.586 36.6387C196.611 34.5391 198.06 32.9277 199.932 31.8047C201.82 30.6654 203.968 30.0957 206.377 30.0957C209.99 30.0957 212.83 31.235 214.897 33.5137C216.981 35.7923 218.022 39.0231 218.022 43.2061V46.0869H201.201C201.429 47.8122 202.113 49.1956 203.252 50.2373C204.408 51.279 205.864 51.7998 207.622 51.7998C210.34 51.7998 212.464 50.8151 213.994 48.8457L217.461 52.7275C216.403 54.2249 214.971 55.3968 213.164 56.2432C211.357 57.0732 209.355 57.4883 207.158 57.4883ZM206.353 35.8086C204.953 35.8086 203.813 36.2806 202.935 37.2246C202.072 38.1686 201.519 39.5195 201.274 41.2773H211.089V40.7158C211.056 39.1533 210.633 37.9489 209.819 37.1025C209.006 36.2399 207.85 35.8086 206.353 35.8086ZM242.949 24.0898V30.584H247.466V35.7598H242.949V48.9434C242.949 49.9199 243.136 50.6198 243.511 51.043C243.885 51.4661 244.601 51.6777 245.659 51.6777C246.44 51.6777 247.132 51.6208 247.734 51.5068V56.8535C246.351 57.2767 244.927 57.4883 243.462 57.4883C238.514 57.4883 235.991 54.9899 235.894 49.9932V35.7598H232.036V30.584H235.894V24.0898H242.949Z"
+              fill="white"
+            />
+            <path
+              d="M334.409 21.4629H321.343V57H312.554V21.4629H299.663V14.3438H334.409V21.4629ZM352.339 57C351.948 56.2383 351.665 55.291 351.489 54.1582C349.438 56.4434 346.772 57.5859 343.491 57.5859C340.386 57.5859 337.808 56.6875 335.757 54.8906C333.726 53.0938 332.71 50.8281 332.71 48.0938C332.71 44.7344 333.95 42.1562 336.431 40.3594C338.931 38.5625 342.534 37.6543 347.241 37.6348H351.138V35.8184C351.138 34.3535 350.757 33.1816 349.995 32.3027C349.253 31.4238 348.071 30.9844 346.45 30.9844C345.024 30.9844 343.901 31.3262 343.081 32.0098C342.28 32.6934 341.88 33.6309 341.88 34.8223H333.413C333.413 32.9863 333.979 31.2871 335.112 29.7246C336.245 28.1621 337.847 26.9414 339.917 26.0625C341.987 25.1641 344.312 24.7148 346.89 24.7148C350.796 24.7148 353.892 25.7012 356.177 27.6738C358.481 29.627 359.634 32.3809 359.634 35.9355V49.6758C359.653 52.6836 360.073 54.959 360.894 56.502V57H352.339ZM345.337 51.1113C346.587 51.1113 347.739 50.8379 348.794 50.291C349.849 49.7246 350.63 48.9727 351.138 48.0352V42.5859H347.974C343.735 42.5859 341.479 44.0508 341.206 46.9805L341.177 47.4785C341.177 48.5332 341.548 49.4023 342.29 50.0859C343.032 50.7695 344.048 51.1113 345.337 51.1113ZM408.647 45.4863L412.808 25.3008H420.981L412.896 57H405.806L399.8 37.0488L393.794 57H386.733L378.647 25.3008H386.821L390.952 45.457L396.753 25.3008H402.876L408.647 45.4863ZM443.569 57C443.179 56.2383 442.896 55.291 442.72 54.1582C440.669 56.4434 438.003 57.5859 434.722 57.5859C431.616 57.5859 429.038 56.6875 426.987 54.8906C424.956 53.0938 423.94 50.8281 423.94 48.0938C423.94 44.7344 425.181 42.1562 427.661 40.3594C430.161 38.5625 433.765 37.6543 438.472 37.6348H442.368V35.8184C442.368 34.3535 441.987 33.1816 441.226 32.3027C440.483 31.4238 439.302 30.9844 437.681 30.9844C436.255 30.9844 435.132 31.3262 434.312 32.0098C433.511 32.6934 433.11 33.6309 433.11 34.8223H424.644C424.644 32.9863 425.21 31.2871 426.343 29.7246C427.476 28.1621 429.077 26.9414 431.147 26.0625C433.218 25.1641 435.542 24.7148 438.12 24.7148C442.026 24.7148 445.122 25.7012 447.407 27.6738C449.712 29.627 450.864 32.3809 450.864 35.9355V49.6758C450.884 52.6836 451.304 54.959 452.124 56.502V57H443.569ZM436.567 51.1113C437.817 51.1113 438.97 50.8379 440.024 50.291C441.079 49.7246 441.86 48.9727 442.368 48.0352V42.5859H439.204C434.966 42.5859 432.71 44.0508 432.437 46.9805L432.407 47.4785C432.407 48.5332 432.778 49.4023 433.521 50.0859C434.263 50.7695 435.278 51.1113 436.567 51.1113ZM465.161 25.3008L465.425 28.9629C467.69 26.1309 470.728 24.7148 474.536 24.7148C477.896 24.7148 480.396 25.7012 482.036 27.6738C483.677 29.6465 484.517 32.5957 484.556 36.5215V57H476.089V36.7266C476.089 34.9297 475.698 33.6309 474.917 32.8301C474.136 32.0098 472.837 31.5996 471.021 31.5996C468.638 31.5996 466.851 32.6152 465.659 34.6465V57H457.192V25.3008H465.161Z"
+              fill="#FF1D6C"
+            />
+          </g>
+          <g filter="url(#filter1_d_5806:6918)">
+            <path
+              d="M374.701 5.57067L365.492 10.8155L375.106 16.1607L374.701 5.57067Z"
+              fill="#FF1D6C"
+            />
+            <path
+              d="M376.2 5.51333L376.106 3.04455L373.959 4.26724L364.75 9.51205L362.434 10.8312L364.763 12.1265L374.377 17.4717L376.707 18.7669L376.605 16.1033L376.2 5.51333Z"
+              stroke="#FF1D6C"
+              stroke-width="3"
+            />
+          </g>
+          <g filter="url(#filter2_d_5806:6918)">
+            <rect
+              x="255.5"
+              y="30.5"
+              width="26"
+              height="25"
+              stroke="#FF1D6C"
+              stroke-width="7"
+              shape-rendering="crispEdges"
+            />
+          </g>
+          <g filter="url(#filter3_d_5806:6918)">
+            <circle
+              cx="131.5"
+              cy="44.5"
+              r="14"
+              stroke="#FF1D6C"
+              stroke-width="7"
+              shape-rendering="crispEdges"
+            />
+          </g>
+          <g filter="url(#filter4_d_5806:6918)">
+            <rect x="365" y="25" width="8" height="32" fill="#FF1D6C" />
+          </g>
+          <defs>
+            <filter
+              id="filter0_d_5806:6918"
+              x="0.105469"
+              y="14.3438"
+              width="487.45"
+              height="50.2422"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="1.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.0509804 0 0 0 0 0.0431373 0 0 0 0 0.0470588 0 0 0 0.2 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_5806:6918"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_5806:6918"
+                result="shape"
+              />
+            </filter>
+            <filter
+              id="filter1_d_5806:6918"
+              x="356.375"
+              y="0.518433"
+              width="24.9326"
+              height="27.8547"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="1.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.0509804 0 0 0 0 0.0431373 0 0 0 0 0.0470588 0 0 0 0.2 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_5806:6918"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_5806:6918"
+                result="shape"
+              />
+            </filter>
+            <filter
+              id="filter2_d_5806:6918"
+              x="249"
+              y="27"
+              width="39"
+              height="39"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="1.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.0509804 0 0 0 0 0.0431373 0 0 0 0 0.0470588 0 0 0 0.2 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_5806:6918"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_5806:6918"
+                result="shape"
+              />
+            </filter>
+            <filter
+              id="filter3_d_5806:6918"
+              x="111"
+              y="27"
+              width="41"
+              height="42"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="1.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.0509804 0 0 0 0 0.0431373 0 0 0 0 0.0470588 0 0 0 0.2 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_5806:6918"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_5806:6918"
+                result="shape"
+              />
+            </filter>
+            <filter
+              id="filter4_d_5806:6918"
+              x="362"
+              y="25"
+              width="14"
+              height="39"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="1.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.0509804 0 0 0 0 0.0431373 0 0 0 0 0.0470588 0 0 0 0.2 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_5806:6918"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_5806:6918"
+                result="shape"
+              />
+            </filter>
+          </defs>
+        </svg>
+
+        <h4 class="search__text">台北、台中、台南、屏東、宜蘭……遊遍台灣</h4>
+        <input type="text" class="box search__box" />
+        <button class="search__btn search__btn-1">
+          <svg
+            width="16"
+            height="22"
+            viewBox="0 0 16 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.5 8.20039C15.5 4.05412 12.1392 0.6875 8 0.6875C3.86085 0.6875 0.5 4.05412 0.5 8.20039C0.5 11.6024 2.87028 14.6501 6.125 15.5006L6.76179 17.2017C4.99292 17.308 2.02123 17.7332 2.02123 19.2216C2.02123 21.2416 7.39858 21.3125 8.03538 21.3125C8.67217 21.3125 14.0495 21.2416 14.0495 19.2216C14.0495 17.6978 11.0425 17.308 9.27358 17.2017L9.875 15.5361C13.1297 14.6856 15.5 11.6379 15.5 8.20039ZM10.441 8.20039C10.441 9.54703 9.34434 10.6456 8 10.6456C6.65566 10.6456 5.55896 9.54703 5.55896 8.20039C5.55896 6.85374 6.65566 5.75515 8 5.75515C9.34434 5.75515 10.441 6.85374 10.441 8.20039ZM12.7759 19.2216C12.4222 19.576 10.6887 20.1076 8 20.1076C5.3467 20.1076 3.61321 19.576 3.22406 19.2216C3.54245 18.9027 4.99292 18.442 7.18632 18.3711L7.57547 19.3988C7.64623 19.576 7.78774 19.6823 8 19.6823C8.17689 19.6823 8.35377 19.576 8.42453 19.3988L8.7783 18.3711C11.0071 18.442 12.4222 18.9027 12.7759 19.2216Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+        <select class="box search__type">
+          <option value="ScenicSpot" class="search__type-0">類 別</option>
+          <option value="ScenicSpot" class="search__type-1">景 點</option>
+          <option value="Restaurant" class="search__type-2">美 食</option>
+          <option value="Hotel" class="search__type-3">住 宿</option>
+        </select>
+        <select class="box search__city">
+          <option value="Taipei" class="search__city-0">不分縣市</option>
+          <option value="Taipei" class="serch__city1">台北市</option>
+          <option value="NewTaipei" class="serch__city2">新北市</option>
+          <option value="Taoyuan" class="serch__city3">桃園市</option>
+          <option value="Taichung" class="serch__city4">台中市</option>
+          <option value="Tainan" class="serch__city5">台南市</option>
+          <option value="Kaohsiung" class="serch__city6">高雄市</option>
+          <option value="Keelung" class="serch__city7">基隆市</option>
+          <option value="Hsinchu" class="serch__city8">新竹市</option>
+          <option value="HsinchuCounty" class="serch__city9">新竹縣</option>
+          <option value="MiaoliCounty" class="serch__city10">苗栗縣</option>
+          <option value="ChanghuaCounty" class="serch__city11">彰化縣</option>
+          <option value="NantouCounty" class="serch__city12">南投縣</option>
+          <option value="YunlinCounty" class="serch__city13">雲林縣</option>
+          <option value="ChiayiCounty" class="serch__city14">嘉義縣</option>
+          <option value="Chiayi" class="serch__city15">嘉義市</option>
+          <option value="PingtungCounty" class="serch__city16">屏東縣</option>
+          <option value="YilanCounty" class="serch__city17">宜蘭縣</option>
+          <option value="HualienCounty" class="serch__city18">花蓮縣</option>
+          <option value="TaitungCounty" class="serch__city19">台東縣</option>
+          <option value="KinmenCounty" class="serch__city20">金門縣</option>
+          <option value="PenghuCounty" class="serch__city21">澎湖縣</option>
+          <option value="LienchiangCounty" class="serch__city23">連江縣</option>
+        </select>
+        <button class="search__btn search__btn-2">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.5902 15.8005L16.5899 15.8002L14.4894 13.6039C15.5988 12.2273 16.267 10.4511 16.267 8.51687C16.267 4.17427 12.8923 0.614233 8.70886 0.614233C4.52548 0.614233 1.15 4.17422 1.15 8.51687C1.15 12.8595 4.52544 16.4203 8.70886 16.4203C10.3801 16.4203 11.9252 15.8501 13.1759 14.889L15.2995 17.1078L15.3 17.1083C15.4754 17.2909 15.709 17.3857 15.9447 17.3857C16.1801 17.3857 16.4157 17.2915 16.5917 17.105C16.9374 16.7419 16.9353 16.1621 16.5902 15.8005ZM2.96031 8.51687C2.96031 5.17117 5.55457 2.47761 8.70886 2.47761C11.8624 2.47761 14.4567 5.17114 14.4567 8.51687C14.4567 11.8627 11.8623 14.5569 8.70886 14.5569C5.55463 14.5569 2.96031 11.8626 2.96031 8.51687Z"
+              fill="white"
+              stroke="white"
+              stroke-width="0.7"
+            />
+          </svg>
+        </button>
+      </div>
+    </section>
+    <div class="init-page">
+      <section class="city">
+        <div class="city__title">
+          <svg
+            width="20"
+            height="17"
+            viewBox="0 0 20 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C" />
+          </svg>
+          熱門城市
+        </div>
+        <div class="city__gallery city__gallery-taipei">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 21.7778C12 21.7778 20 16.4445 20 10.2222C20 8.1005 19.1571 6.06567 17.6569 4.56538C16.1566 3.06508 14.1217 2.22223 12 2.22223C9.87827 2.22223 7.84344 3.06508 6.34315 4.56538C4.84285 6.06567 4 8.1005 4 10.2222C4 16.4445 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74966 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74966 14.6676 10.2224Z"
+              fill="white"
+            />
+          </svg>
+          台北市
+        </div>
+        <div class="city__gallery city__gallery-newtaipei">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 21.7778C12 21.7778 20 16.4445 20 10.2222C20 8.1005 19.1571 6.06567 17.6569 4.56538C16.1566 3.06508 14.1217 2.22223 12 2.22223C9.87827 2.22223 7.84344 3.06508 6.34315 4.56538C4.84285 6.06567 4 8.1005 4 10.2222C4 16.4445 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74966 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74966 14.6676 10.2224Z"
+              fill="white"
+            />
+          </svg>
+          新北市
+        </div>
+        <div class="city__gallery city__gallery-taoyoun">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 21.7778C12 21.7778 20 16.4445 20 10.2222C20 8.1005 19.1571 6.06567 17.6569 4.56538C16.1566 3.06508 14.1217 2.22223 12 2.22223C9.87827 2.22223 7.84344 3.06508 6.34315 4.56538C4.84285 6.06567 4 8.1005 4 10.2222C4 16.4445 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74966 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74966 14.6676 10.2224Z"
+              fill="white"
+            />
+          </svg>
+          桃園市
+        </div>
+        <div class="city__gallery city__gallery-hsinchu">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 21.7778C12 21.7778 20 16.4445 20 10.2222C20 8.1005 19.1571 6.06567 17.6569 4.56538C16.1566 3.06508 14.1217 2.22223 12 2.22223C9.87827 2.22223 7.84344 3.06508 6.34315 4.56538C4.84285 6.06567 4 8.1005 4 10.2222C4 16.4445 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74966 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74966 14.6676 10.2224Z"
+              fill="white"
+            />
+          </svg>
+          新竹市
+        </div>
+        <div class="city__gallery city__gallery-taichung">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 21.7778C12 21.7778 20 16.4445 20 10.2222C20 8.1005 19.1571 6.06567 17.6569 4.56538C16.1566 3.06508 14.1217 2.22223 12 2.22223C9.87827 2.22223 7.84344 3.06508 6.34315 4.56538C4.84285 6.06567 4 8.1005 4 10.2222C4 16.4445 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74966 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74966 14.6676 10.2224Z"
+              fill="white"
+            />
+          </svg>
+          台中
+        </div>
+        <div class="city__gallery city__gallery-nontou">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 21.7778C12 21.7778 20 16.4445 20 10.2222C20 8.1005 19.1571 6.06567 17.6569 4.56538C16.1566 3.06508 14.1217 2.22223 12 2.22223C9.87827 2.22223 7.84344 3.06508 6.34315 4.56538C4.84285 6.06567 4 8.1005 4 10.2222C4 16.4445 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74966 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74966 14.6676 10.2224Z"
+              fill="white"
+            />
+          </svg>
+          南投
+        </div>
+        <div class="city__gallery city__gallery-chiayi">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 21.7778C12 21.7778 20 16.4445 20 10.2222C20 8.1005 19.1571 6.06567 17.6569 4.56538C16.1566 3.06508 14.1217 2.22223 12 2.22223C9.87827 2.22223 7.84344 3.06508 6.34315 4.56538C4.84285 6.06567 4 8.1005 4 10.2222C4 16.4445 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74966 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74966 14.6676 10.2224Z"
+              fill="white"
+            />
+          </svg>
+          嘉義
+        </div>
+      </section>
+      <section class="activety">
+        <div class="activety__title">
+          <svg
+            width="20"
+            height="17"
+            viewBox="0 0 20 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C" />
+          </svg>
+          熱門活動
+        </div>
+
+        <div class="activety__item activety__item-1">
+          <img src="img/activety1.png" alt="" class="activety__img" />
+          <h4 class="activety__theme">合歡山國際暗空公園-星空清境跨年活動</h4>
+          <p class="activety__detail">
+            南投縣與各單位多年於合歡山舉辦清境高山跨年晚會活動，今年將活動主軸由傳統跨年晚會轉化成為台灣高山星空遊程之體驗活動，以剛通過美國IDA認證的華語區第一座國際暗空公園作為宣傳主題，在擁有東南的的...
+          </p>
+          <div class="activety__location-box">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 21.7778C12 21.7778 20 16.4444 20 10.2222C20 8.10049 19.1571 6.06566 17.6569 4.56537C16.1566 3.06508 14.1217 2.22222 12 2.22222C9.87827 2.22222 7.84344 3.06508 6.34315 4.56537C4.84285 6.06566 4 8.10049 4 10.2222C4 16.4444 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74965 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74965 14.6676 10.2224Z"
+                fill="#FF1D6C"
+              />
+            </svg>
+            <h4 class="activety__location-text">南投縣 仁愛鄉</h4>
+          </div>
+          <button class="btn activety__btn">活動詳情</button>
+        </div>
+
+        <div class="activety__item activety__item-2">
+          <img src="img/activety2.png" alt="" class="activety__img" />
+          <h4 class="activety__theme">2021臺北燈節</h4>
+          <p class="activety__detail">
+            俗稱「小過年」的元宵節是源遠流長的傳統民俗節慶，臺北市政府自民國86年（西元1997年）辦理「臺北燈節」以來，歷經逾20年的蘊育及特色養成，成為民眾春節期間不可或缺的參觀去處，不僅將新年的歡慶氣...
+          </p>
+          <div class="activety__location-box">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 21.7778C12 21.7778 20 16.4444 20 10.2222C20 8.10049 19.1571 6.06566 17.6569 4.56537C16.1566 3.06508 14.1217 2.22222 12 2.22222C9.87827 2.22222 7.84344 3.06508 6.34315 4.56537C4.84285 6.06566 4 8.10049 4 10.2222C4 16.4444 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74965 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74965 14.6676 10.2224Z"
+                fill="#FF1D6C"
+              />
+            </svg>
+            <h4 class="activety__location-text">臺北市 萬華區</h4>
+          </div>
+          <button class="btn activety__btn">活動詳情</button>
+        </div>
+
+        <div class="activety__item activety__item-3">
+          <img src="img/activety3.png" alt="" class="activety__img" />
+          <h4 class="activety__theme">2021陽明山花季</h4>
+          <p class="activety__detail">
+            南投縣與各單位多年於合歡山舉辦清境高山跨年晚會活動，今年將活動主軸由傳統跨年晚會轉化成為台灣高山星空遊程之體驗活動，以剛通過美國IDA認證的華語區第一座國際暗空公園作為宣傳主題，在擁有東南的的...
+          </p>
+          <div class="activety__location-box">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 21.7778C12 21.7778 20 16.4444 20 10.2222C20 8.10049 19.1571 6.06566 17.6569 4.56537C16.1566 3.06508 14.1217 2.22222 12 2.22222C9.87827 2.22222 7.84344 3.06508 6.34315 4.56537C4.84285 6.06566 4 8.10049 4 10.2222C4 16.4444 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74965 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74965 14.6676 10.2224Z"
+                fill="#FF1D6C"
+              />
+            </svg>
+            <h4 class="activety__location-text">臺北市 北投區</h4>
+          </div>
+          <button class="btn activety__btn">活動詳情</button>
+        </div>
+
+        <div class="activety__item activety__item-4">
+          <img src="img/activety4.png" alt="" class="activety__img" />
+          <h4 class="activety__theme">2021 TIFA台灣國際藝術節</h4>
+          <p class="activety__detail">
+            TIFA台灣國際藝術節為台灣一年一度最重要的藝術節慶、亞洲最具亮點的藝文盛會。「T、I、F、A」以滿溢的藝術才華（Talent）、具創意啟發的內容（Inspiration）號召眾人共享這場藝術的...
+          </p>
+          <div class="activety__location-box">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 21.7778C12 21.7778 20 16.4444 20 10.2222C20 8.10049 19.1571 6.06566 17.6569 4.56537C16.1566 3.06508 14.1217 2.22222 12 2.22222C9.87827 2.22222 7.84344 3.06508 6.34315 4.56537C4.84285 6.06566 4 8.10049 4 10.2222C4 16.4444 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74965 10.5281 7.55575 12.0009 7.55575C13.4736 7.55575 14.6676 8.74965 14.6676 10.2224Z"
+                fill="#FF1D6C"
+              />
+            </svg>
+            <h4 class="activety__location-text">臺北市 中正區</h4>
+          </div>
+          <button class="btn activety__btn">活動詳情</button>
+        </div>
+      </section>
+      <section class="food">
+        <div class="food__title">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="20"
+              height="20"
+              transform="matrix(-1 0 0 1 20 0)"
+              fill="#FFB72C"
+            />
+          </svg>
+
+          熱門餐飲
+        </div>
+        <li class="food__contain">
+          <ul class="food__item food__item-1">
+            <img src="img/food1.png" alt="food" class="food__img" />
+            <h4 class="food__theme">歇心茶樓</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >新竹縣峨眉鄉
+            </div>
+          </ul>
+          <ul class="food__item food__item-2">
+            <img src="img/food2.jfif" alt="food" class="food__img" />
+            <h4 class="food__theme">禾園小吃</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >新竹縣竹東鎮
+            </div>
+          </ul>
+          <ul class="food__item food__item-3">
+            <img src="img/food3.png" alt="food" class="food__img" />
+            <h4 class="food__theme">蘇媽媽湯圓</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >南投縣埔里鎮
+            </div>
+          </ul>
+          <ul class="food__item food__item-4">
+            <img src="img/food4.jfif" alt="food" class="food__img" />
+            <h4 class="food__theme">梅荷園日光湖畔</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >南投縣魚池鄉
+            </div>
+          </ul>
+          <ul class="food__item food__item-5">
+            <img src="img/food5.png" alt="food" class="food__img" />
+            <h4 class="food__theme">戲綠川民宿/甫田6號部落美食餐廳</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >南投縣埔里鎮
+            </div>
+          </ul>
+          <ul class="food__item food__item-6">
+            <img src="img/food6.jfif" alt="food" class="food__img" />
+            <h4 class="food__theme">樹蛙亭田園坊</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >南投縣埔里鎮
+            </div>
+          </ul>
+          <ul class="food__item food__item-7">
+            <img src="img/food7.jfif" alt="food" class="food__img" />
+            <h4 class="food__theme">望海巴耐餐廳/咖啡</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >花蓮縣壽豐鄉
+            </div>
+          </ul>
+          <ul class="food__item food__item-8">
+            <img src="img/food8.png" alt="food" class="food__img" />
+            <h4 class="food__theme">
+              雲林 / 馬蹄蛤生態休閒園區(獲選參加2010台灣美食展...
+            </h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >雲林縣口湖鄉
+            </div>
+          </ul>
+          <ul class="food__item food__item-9">
+            <img src="img/food9.jfif" alt="food" class="food__img" />
+            <h4 class="food__theme">宜梧蚵嗲</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                /></svg
+              >雲林縣口湖鄉
+            </div>
+          </ul>
+          <ul class="food__item food__item-10">
+            <img src="img/food10.png" alt="food" class="food__img" />
+            <h4 class="food__theme">友誼山莊簡餐</h4>
+            <div class="food__location">
+              <svg
+                class="food__icon"
+                width="11"
+                height="14"
+                viewBox="0 0 11 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
+                  fill="#FF1D6C"
+                />
+              </svg>
+              連江縣莒光鄉
+            </div>
+          </ul>
+        </li>
+      </section>
+    </div>
+    <div class="search-result">
+      <h4 class="search-result__title">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            width="20"
+            height="20"
+            transform="matrix(-1 0 0 1 20 0)"
+            fill="#FFB72C"
+          /></svg
+        >熱門美食
+      </h4>
+      <ul class="search-contain"></ul>
+      <div class="control-item">
+        <button class="control-item__btn control-item__btn--forward">
+          <svg
+            width="6"
+            height="8"
+            viewBox="0 0 6 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 7.81836L6 0.181994L3.33796e-07 4.00018L6 7.81836Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+        <p class="control-item__page">1</p>
+        <button class="control-item__btn control-item__btn--backward">
+          <svg
+            width="6"
+            height="8"
+            viewBox="0 0 6 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0.181641V7.81801L6 3.99982L0 0.181641Z" fill="white" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <footer class="footer">Taiwan Tourguide © Code: Alex / Design: KT</footer>
+  </body>
+</html>
