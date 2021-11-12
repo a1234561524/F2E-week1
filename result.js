@@ -33,8 +33,8 @@ let searchResult = document.querySelector(".search-result");
 
 let show = function (page) {
   //每次顯示20筆
-  $(".search-contain").empty();
-  //box.innerHTML = "";
+  // $(".search-contain").empty();
+  box.innerHTML = "";
   console.log(page, count);
   let currentCount = page * 20 < totalCount ? page * 20 : totalCount;
   for (let i = count; i < currentCount; i++) {
