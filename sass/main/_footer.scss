@@ -1,0 +1,10 @@
+.footer {
+  grid-column: full-start/full-end;
+  background-color: #fff;
+  height: 6.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: $color-grey-mid;
+}

@@ -1,0 +1,47 @@
+// COLOR VARIABLES
+$color-primary: #ff1d6c;
+$color-secondary: #ffb72c;
+$color-third: #007350;
+
+$color-grey-light: #f6f7fb;
+$color-grey-mid: #acacac;
+$color-grey-dark: #0d0b0c;
+
+$color-background: #e5e5e5;
+
+// FONT VARIABLES
+$font-en: "roboto", sans-serif;
+$font-ch: "Noto Sans TC", sans-serif;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+}
+
+body {
+  font-family: $font-ch;
+  color: $color-grey-dark;
+  font-weight: 300;
+  line-height: 1.6;
+  background-color: $color-background;
+}
+
+.container {
+  display: grid;
+  /*grid-template-rows: min-content 85vh min-content repeat(2, min-content) min-content;*/
+  grid-template-rows: min-content 75vh min-content;
+
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr)
+    repeat(5, [col-start] minmax(21rem, 1fr) [col-end])
+    minmax(6rem, 1fr)
+    [full-end];
+}

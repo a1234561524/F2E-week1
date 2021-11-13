@@ -1,0 +1,79 @@
+.city {
+  grid-column: col-start 1 / col-end 5;
+
+  display: grid;
+  grid-template-columns: repeat(5, 20.2rem);
+  grid-template-rows: 3rem repeat(2, 10.6rem);
+
+  grid-gap: 1.3rem;
+  margin-top: 10rem;
+  margin-bottom: 6rem;
+  font-size: 2rem;
+  font-family: $font-ch;
+  color: #fff;
+  overflow: hidden;
+
+  &__title {
+    justify-self: start;
+    color: $color-grey-dark;
+    font-weight: 500;
+  }
+
+  &__gallery {
+    background-position: center center;
+    background-size: cover;
+    border: #fff 1rem solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 3px rgba(13, 11, 12, 0.2);
+    cursor: pointer;
+
+    transition: all 0.2s;
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &-taipei {
+      background-image: linear-gradient(rgba(#0d0b0c, 0.3), rgba(#0d0b0c, 0.3)),
+        url(../img/台北市.jfif);
+      grid-row: 2/-1;
+    }
+
+    &-newtaipei {
+      background-image: linear-gradient(rgba(#0d0b0c, 0.3), rgba(#0d0b0c, 0.3)),
+        url(../img/新北市.jfif);
+
+      grid-row: 2/3;
+    }
+
+    &-taoyoun {
+      background-image: linear-gradient(rgba(#0d0b0c, 0.3), rgba(#0d0b0c, 0.3)),
+        url(../img/桃園市.jfif);
+      grid-row: 3/4;
+      grid-column: 2/3;
+    }
+    &-hsinchu {
+      background-image: linear-gradient(rgba(#0d0b0c, 0.3), rgba(#0d0b0c, 0.3)),
+        url(../img/新竹市.jfif);
+      grid-row: 2/-1;
+    }
+    &-taichung {
+      background-image: url(../img/台中.jfif);
+      grid-row: 2/3;
+    }
+    &-nontou {
+      background-image: linear-gradient(rgba(#0d0b0c, 0.3), rgba(#0d0b0c, 0.3)),
+        url(../img/南投.jfif);
+      grid-row: 3/4;
+      grid-column: 4/5;
+    }
+    &-chiayi {
+      background-image: linear-gradient(rgba(#0d0b0c, 0.3), rgba(#0d0b0c, 0.3)),
+        url(../img/嘉義.jfif);
+      grid-row: 2/-1;
+    }
+  }
+}

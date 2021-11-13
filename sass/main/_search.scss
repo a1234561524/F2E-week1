@@ -1,0 +1,78 @@
+.search {
+  grid-column: full-start/full-end;
+  background-color: #fff;
+
+  background-image: url(../img/search-background-2.jfif);
+  background-position: center center;
+  background-size: cover;
+  border: #fff 2rem solid;
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  align-items: center;
+  position: relative;
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: -27px;
+    z-index: -1;
+    width: calc(50% + 33px);
+    height: 52px;
+    background-color: #0d0b0c;
+    opacity: 0.3;
+    filter: blur(7px);
+  }
+
+  &::before {
+    left: -26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0) rotate(5deg);
+  }
+
+  &::after {
+    right: -26px;
+    transform: matrix(-1, 0, 0, 1, 0, 0) rotate(-5deg);
+  }
+
+  &__contain {
+    grid-column: 2/3;
+    display: grid;
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 16.7vw 16.7vw 2rem;
+    grid-gap: 1rem;
+  }
+  &__icon {
+    grid-column: 1/-1;
+  }
+
+  &__text {
+    grid-column: 1/-1;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  &__box {
+    grid-column: 1 / span 2;
+    box-shadow: 0 4px 3px rgba(13, 11, 12, 0.2);
+  }
+
+  &__btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  &__btn-1 {
+    background-color: $color-primary;
+  }
+
+  &__btn-2 {
+    background-color: $color-secondary;
+  }
+}
+.box {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.1rem;
+}

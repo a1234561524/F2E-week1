@@ -1,0 +1,21 @@
+{
+  "name": "TaiwanTour",
+  "version": "1.0.0",
+  "description": "TaiwanTour webpage",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass sass/main/main.scss css/main.css  -w",
+    "watch1:sass": "node-sass sass/attraction/main.scss css/attraction.css  -w",
+    "watch2:sass": "node-sass sass/food/main.scss css/food.css  -w",
+    "start": "npm-run-all --parallel    watch:sass"
+  },
+  "author": "Jyun",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "concat": "^1.0.3",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "postcss-cli": "^4.1.1"
+  }
+}

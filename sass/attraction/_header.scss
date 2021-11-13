@@ -1,0 +1,55 @@
+.header {
+  grid-column: full-start/full-end;
+
+  display: flex;
+  padding: 3rem 12rem 3rem 4rem;
+  font-family: $font-ch;
+  background-color: #fff;
+
+  .logo {
+    margin-right: auto;
+    margin-left: 8rem;
+    &__img {
+      width: 10rem;
+    }
+  }
+}
+
+.use-nav {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 27px;
+
+  &__attraction {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__link-1 {
+    color: $color-primary;
+  }
+
+  &__stay {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: $color-secondary;
+  }
+
+  &__link-2 {
+    color: $color-secondary;
+  }
+
+  &__transportation {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: $color-third;
+  }
+
+  &__link-3 {
+    color: $color-third;
+  }
+}
