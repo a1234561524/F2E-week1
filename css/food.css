@@ -33,21 +33,6 @@ body {
   font-weight: 400;
   font-size: 1.6rem; }
 
-/*.btn {
-  background-color: $color-primary;
-  color: #fff;
-  border: none;
-  border-radius: 0;
-  font-family: $font-ch;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  padding: 1.8rem 3rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  &:hover {
-    background-color: $color-primary;
-  }
-}*/
 .header {
   grid-column: full-start/full-end;
   display: flex;

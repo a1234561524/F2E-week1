@@ -23,6 +23,7 @@ let contain,
   page = 1,
   totalPage,
   totalCount;
+
 let box = document.querySelector(".search-contain");
 let forward = document.querySelector(".control-item__btn--forward");
 let backward = document.querySelector(".control-item__btn--backward");
@@ -38,6 +39,14 @@ let show = function (page) {
   console.log(page, count);
   let currentCount = page * 20 < totalCount ? page * 20 : totalCount;
   for (let i = count; i < currentCount; i++) {
+    let contextTitle = contain[i].Address;
+    if (contextTitle !== undefined) {
+      if (contextTitle.length > 12) {
+        contextTitle = contextTitle.substring(0, 12) + "...";
+      }
+    } else {
+      contextTitle = contain[i].City;
+    }
     let html = `<li class="search-contain__item">
     <img src=${
       contain[i].Picture.PictureUrl1 ?? "img/nofound.png"
@@ -59,7 +68,7 @@ let show = function (page) {
         d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z"
         fill="#FF1D6C"
       /></svg
-    >基隆市中正區
+    >${contextTitle}
   </div>
     </li>`;
     box.insertAdjacentHTML("beforeend", html);
@@ -91,7 +100,7 @@ let search = function (type, city) {
   page = 1;
   axios
     .get(
-      `https://ptx.transportdata.tw/MOTC/v2/Tourism/${type}/${city}?$format=JSON`,
+      `https://ptx.transportdata.tw/MOTC/v2/Tourism/${type}${city}?$format=JSON`,
       {
         headers: getAuthorizationHeader(),
       }
@@ -103,7 +112,7 @@ let search = function (type, city) {
       showTitle(type);
       show(page);
       searchResult.style.display = "grid";
-      document.querySelector(".init-page").remove();
+      document.querySelector(".init-page").style.display = "none";
     })
     .catch(function (error) {
       console.log(error);
@@ -111,7 +120,11 @@ let search = function (type, city) {
 };
 
 searchBtn2.addEventListener("click", function () {
-  search(searchType.value, searchCity.value);
+  if (searchType.value === "") {
+    alert("請選擇類別");
+  } else {
+    search(searchType.value, searchCity.value);
+  }
 });
 
 forward.addEventListener("click", function () {

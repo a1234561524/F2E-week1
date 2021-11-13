@@ -34,21 +34,6 @@ body {
   font-weight: 400;
   font-size: 1.6rem; }
 
-/*.btn {
-  background-color: $color-primary;
-  color: #fff;
-  border: none;
-  border-radius: 0;
-  font-family: $font-ch;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  padding: 1.8rem 3rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  &:hover {
-    background-color: $color-primary;
-  }
-}*/
 .header {
   grid-column: full-start/full-end;
   display: flex;
@@ -212,7 +197,8 @@ body {
     align-self: end;
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem; }
+    margin-bottom: 1.5rem;
+    margin-right: 1rem; }
   .search-contain__icon {
     margin: 0 1.2rem; }
 
@@ -243,7 +229,8 @@ body {
   margin-bottom: 6rem;
   font-size: 2rem;
   font-family: "Noto Sans TC", sans-serif;
-  color: #fff; }
+  color: #fff;
+  overflow: hidden; }
   .city__title {
     justify-self: start;
     color: #0d0b0c;
@@ -257,7 +244,11 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 4px 3px rgba(13, 11, 12, 0.2); }
+    box-shadow: 0 4px 3px rgba(13, 11, 12, 0.2);
+    cursor: pointer;
+    transition: all 0.2s; }
+    .city__gallery:hover {
+      transform: scale(1.05); }
     .city__gallery-taipei {
       background-image: linear-gradient(rgba(13, 11, 12, 0.3), rgba(13, 11, 12, 0.3)), url(../img/台北市.jfif);
       grid-row: 2/-1; }
@@ -346,13 +337,20 @@ body {
     gap: 1rem; }
   .activety__location-text {
     font-weight: 400; }
-  .activety__btn {
+  .activety__btn, .activety__btn:link, .activety__btn:visited {
     color: #ff1d6c;
     background-color: #fff;
     padding: 0.5rem 3rem;
     border: #ff1d6c solid 0.2rem;
     border-radius: 1rem;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: all 0.2s; }
+  .activety__btn:hover {
+    color: #fff;
+    background-color: #ff1d6c;
+    transform: translateY(-3px); }
+  .activety__btn:active {
+    transform: translateY(0); }
 
 .food {
   grid-column: col-start 1 / col-end 5;
