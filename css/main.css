@@ -277,7 +277,7 @@ body {
   grid-column: col-start 1 / col-end 5;
   display: grid;
   grid-template-rows: min-content repeat(2, 23rem);
-  grid-template-columns: repeat(auto-fill, 52rem);
+  grid-template-columns: repeat(auto-fill, 50rem);
   grid-gap: 2.1rem;
   font-size: 1.4rem;
   margin-bottom: 8.3rem;
